@@ -79,6 +79,7 @@ local function process_tag(input, tag)
     end
 
     num_read = num_read + #"[/]"
+    -- FIXME: it'd be better to just fix the root of the problem here
     num_read = num_read - 1 -- num_read is being incremented one too many times somewhere. don't know or care where.
 
     local param_text = ""

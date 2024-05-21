@@ -1,50 +1,25 @@
-local ModuleManager = require("module-manager")
-local deps = require("deps")
+require("install-missing-modules")()
 
-local dep_requires = {}
-for _, v in pairs(deps) do
-    table.insert(dep_requires, v.require_name)
-end
-
-local missing_modules = ModuleManager.find_missing(dep_requires)
-if #missing_modules > 0 then
-    print("The following modules will be installed:")
-    for _, mod in ipairs(missing_modules) do
-        print("  ", mod)
-    end
-
-    local input
-    while true do
-        print("Confirm? (y/n)")
-        input = io.read():lower():gsub("\n", "")
-
-        if input == "n" then
-            print("Refusing to continue without installing dependencies.")
-            return os.exit(false)
-        elseif input == "y" then
-
-            for _, installee in ipairs(missing_modules) do
-                for _, dep in ipairs(deps) do
-
-                    if dep.require_name == installee then
-                        local status = ModuleManager.install(dep.install_name)
-                        if not status then
-                            print(string.format("Failed to install %s (%s).", dep.install_name, dep.require_name))
-                            os.exit(false)
-                        end
-                    end
-
-                end
-            end
-
-            break
-        end
-    end
-end
-
+local CliParser = require("cli-parser")
+local HelpMessage = require("help-message")
 local Parser = require("parser")
 
-local str = [[
+if (#arg == 1 and arg[1] == "--help") or #arg == 0 then
+    HelpMessage.print()
+    return
+end
+
+local cmd_name = arg[1]
+local cmd = CliParser.parse(arg)
+
+if not cmd then
+    return error(string.format("No such command `%s` (use `--help` for a list of commands)", cmd_name))
+end
+
+cmd:func()
+
+--[[
+local str = 
 hello!! i am a string
 i am a line break
 
@@ -53,6 +28,7 @@ more words go here
 
 [italic]i am some italic text[/]
 
-[link dest="https://www.callistoashley.dev/whatever.html"]i am a hyperlink[/] ]]
+[link dest="https://www.callistoashley.dev/whatever.html"]i am a hyperlink[/] 
 
 print(Parser:parse(str))
+]]

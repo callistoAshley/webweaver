@@ -13,6 +13,8 @@ local Tag =
     end,
 }
 
+-- TODO: return this functions in a table
+
 function new_tag(name, html_name)
     return setmetatable(
     {

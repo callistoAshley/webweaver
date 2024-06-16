@@ -1,9 +1,9 @@
 local Helpers = {}
 
--- returns true if `key` exists within `tabl`
-function Helpers.table_contains(tabl, key)
-    for k, _ in pairs(tabl) do
-        if k == key then
+-- returns true if `val` exists within `tabl`
+function Helpers.table_contains(tabl, val)
+    for _, v in pairs(tabl) do
+        if v == val then
             return true
         end
     end

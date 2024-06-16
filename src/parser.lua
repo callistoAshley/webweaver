@@ -1,3 +1,4 @@
+-- TODO: it might be better to use html-parser's StrReader type here instead of matches
 local Tags = require("tags")
 
 local Parser =

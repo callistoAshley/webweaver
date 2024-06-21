@@ -13,9 +13,7 @@ local Tag =
     end,
 }
 
--- TODO: return this functions in a table
-
-function new_tag(name, html_name)
+function Tag.new_tag(name, html_name)
     return setmetatable(
     {
         name = name,
@@ -24,6 +22,8 @@ function new_tag(name, html_name)
     }, { __index = Tag })
 end
 
-function tag_param_format(k, v)
+function Tag.tag_param_format(k, v)
     return string.format('%s="%s"', k, v)
 end
+
+return Tag

@@ -25,7 +25,7 @@ end
 local function get_by_name_or_alias(table, name)
     for _, val in ipairs(table) do
         if type(val.name) == "table" then
-            for _, alias in val.name do
+            for _, alias in ipairs(val.name) do
                 if alias == name then
                     return val
                 end

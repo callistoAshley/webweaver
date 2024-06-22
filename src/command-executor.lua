@@ -1,16 +1,9 @@
-local CommandExecutor = 
-{
-    commands =
-    {
-        require("commands.help"),
-        require("commands.new-blog"),
-        require("commands.new-post"),
-        require("commands.parse"),
-    },
-}
+local CommandList = require("command-list")
+
+local CommandExecutor = {}
 
 function CommandExecutor.get_cmd_by_name(name)
-    for _, cmd in ipairs(CommandExecutor.commands) do
+    for _, cmd in ipairs(CommandList) do
         if cmd.name == name then return cmd end
     end
     return nil

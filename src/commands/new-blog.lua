@@ -9,9 +9,7 @@ return CmdHelpers.new_command
     name = "new-blog",
     short_help = "Create a new wvblog.json file in the current or provided directory.",
     long_help = 
-    [[
-        Create a new wvblog.json file in the current or provided directory.    
-    ]],
+    [[Create a new wvblog.json file in the current or provided directory.]],
     func = new_blog_func,
 
     possible_args =

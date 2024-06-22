@@ -9,8 +9,6 @@ return CmdHelpers.new_command
     name = "parse",
     short_help = "Invoke the parser without generating a new blog post.",
     long_help = 
-    [[
-        Invoke the parser without generating a new blog post.
-    ]],
+    [[Invoke the parser without generating a new blog post.]],
     func = parse_func,
 }

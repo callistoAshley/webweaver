@@ -11,7 +11,7 @@ local function help_func(cmd)
         print(string.format("\t%s", command.long_help))
         print("\nOPTIONS:")
         for _, arg in ipairs(command.possible_args) do
-            local text = "\t"
+            local text = ""
 
             if type(arg.name) == "table" then
                 for i = 1, #arg.name do
@@ -34,7 +34,7 @@ local function help_func(cmd)
                 text = string.format("[%s]", text)
             end
 
-            text = text .. string.format(": %s", arg.help)
+            text = "\t" .. text .. string.format(": %s", arg.help)
 
             print(text)
         end

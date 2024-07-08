@@ -8,7 +8,7 @@ local function new_blog_func(cmd)
 
     local dir_arg = cmd:get_arg_by_name("-d")
     if dir_arg then
-        dir = dir_arg:get_value_by_name("dir")
+        dir = dir_arg:get_value_by_name("dir").value
     else
         dir = "./"
     end

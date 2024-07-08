@@ -39,4 +39,13 @@ function Helpers.require_enum(value, enum, enum_name)
     return error(string.format("Value must be one of `%s`", enum_name))
 end
 
+-- returns the contents of the file located at `path` as a string
+function Helpers.file_text(path)
+    local file = io.open(path)
+    if not file then return nil end 
+    local text = file:read("a")
+    file:close()
+    return text
+end
+
 return Helpers

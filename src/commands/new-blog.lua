@@ -15,9 +15,11 @@ local function new_blog_func(cmd)
 
     local fields =
     {
-        -- arg name,    field name,  message,                        default
-        {"--posts-dir", "posts_dir", "Specify the posts directory.", "posts"},
-        {"--skeleton", "skeleton", "Specify the skeleton file.", "skeleton.html"},
+        -- arg name,              field name,            message,                            default
+        {"--posts-dir",           "posts_dir",           "Specify the posts directory.",     "posts"},
+        {"--skeleton",            "skeleton",            "Specify the skeleton file.",       "skeleton.html"},
+        {"--index",               "index",               "Specify the index file.",          "index.html"},
+        {"--index-node-skeleton", "index_node_skeleton", "Specify the index node skeleton.", "index-node-skeleton.html"},
     }
     local o = {}
 
@@ -85,6 +87,24 @@ return CmdHelpers.new_command
             {
                 CmdHelpers.new_value("value", CmdHelpers.ValueType.REQUIRED)
             }
-        )
+        ),
+        CmdHelpers.new_arg
+        (
+            "--index",
+            "Specify the index file.",
+            CmdHelpers.ArgType.OPTIONAL,
+            {
+                CmdHelpers.new_value("value", CmdHelpers.ValueType.REQUIRED)
+            }
+        ),
+        CmdHelpers.new_arg
+        (
+            "--index-node-skeleton",
+            "Specify the index node skeleton.",
+            CmdHelpers.ArgType.OPTIONAL,
+            {
+                CmdHelpers.new_value("value", CmdHelpers.ValueType.REQUIRED)
+            }
+        ),
     },
 }

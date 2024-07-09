@@ -2,6 +2,9 @@ local Blog =
 {
     posts_dir = "",
     skeleton = "",
+    index = "",
+    index_node_skeleton = "",
+    posts = {},
 }
 
 function Blog:new(o)

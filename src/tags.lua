@@ -6,8 +6,7 @@ local Tags =
 
     italic = Tag.new_tag("italic", "i"),
 
-    -- FIXME: the css isn't applying
-    underline = Tag.new_tag("underline", "span"):css("text-decoration: underline"),
+    underline = Tag.new_tag("underline", "span"):css("text-decoration: underline;"),
 
     image = Tag.new_tag("image", "img"):param_handler(
         function(self, k, v)

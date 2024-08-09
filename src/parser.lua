@@ -98,6 +98,9 @@ local function process_tag(input, tag)
     if param_text ~= "" then
         param_text = " " .. param_text
     end
+    if tag.css ~= "" then
+        param_text = string.format("%s style=\"%s\"", param_text, tag.css)
+    end
 
     return string.format(
         "<%s%s>%s</%s>", 
